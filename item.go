@@ -32,7 +32,7 @@ func (i *Item) SetExpires(exptime int64) {
 	if exptime > MAX_EXPTIME {
 		i.Expires = time.Unix(exptime, 0)
 		i.Ttl = int(i.Expires.Sub(time.Now()).Seconds())
-	} else if exptime > 0 {
+	} else {
 		i.Ttl = int(exptime)
 		i.Expires = time.Now().Add(time.Duration(exptime) * time.Second)
 	}
